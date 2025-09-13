@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini Store - Modern Ecommerce</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5; /* Softer light gray background */
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: #ffffff !important; /* Ensure brand name is white */
+        }
+        .navbar-nav .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important; /* Lighter links */
+            transition: color 0.3s ease;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #ffffff !important; /* White on hover/active */
+        }
+
+        .hero-section {
+            /* Changed to a more dynamic, modern background */
+            background: linear-gradient(to right, rgba(29, 38, 113, 0.7), rgba(195, 55, 100, 0.7)), url('https://images.unsplash.com/photo-1483985988355-fee5c378980b?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 0; /* Slightly reduced padding */
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh; /* Make hero section taller */
+        }
+        .hero-section h1 {
+            font-size: 3.8rem; /* Slightly larger heading */
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); /* Subtle text shadow */
+        }
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        .hero-section .btn {
+            padding: 0.8rem 2.5rem;
+            border-radius: 50px; /* Pill-shaped button */
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .hero-section .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+        }
+
+        .product-card {
+            border: 1px solid #e0e0e0; /* Subtle border */
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 12px; /* More rounded corners */
+            overflow: hidden; /* Ensures image corners match card */
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Lighter shadow */
+        }
+        .product-card:hover {
+            transform: translateY(-8px); /* Slightly less lift */
+            box-shadow: 0 12px 25px rgba(0,0,0,0.1); /* More prominent shadow on hover */
+        }
+        .product-card img {
+            height: 220px; /* Slightly taller images */
+            object-fit: cover;
+            width: 100%;
+            border-bottom: 1px solid #eee; /* Separator for image */
+        }
+        .product-card .card-body {
+            padding: 1.5rem;
+        }
+        .product-card .card-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+        .product-card .card-text {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+            min-height: 50px; /* Ensures consistent card height */
+        }
+        .price {
+            font-size: 1.4rem; /* Larger price font */
+            font-weight: 700;
+            color: #0d6efd; /* Bootstrap primary color */
+            margin-bottom: 1rem;
+            display: block; /* Make price block level */
+        }
+        .product-card .btn-primary {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            padding: 0.75rem 1rem;
+            border-radius: 8px; /* Slightly rounded buttons */
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .product-card .btn-primary:hover {
+            background-color: #0b5ed7; /* Darker blue on hover */
+            border-color: #0b5ed7;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background-color: #212529; /* Darker, more modern footer */
+            color: rgba(255, 255, 255, 0.8);
+            padding: 3rem 0;
+            font-size: 0.95rem;
+        }
+        .footer .social-icons a {
+            color: rgba(255, 255, 255, 0.7);
+            margin: 0 12px; /* More spacing */
+            font-size: 1.8rem; /* Larger icons */
+            transition: color 0.3s, transform 0.2s;
+            display: inline-block; /* For transform to work */
+        }
+        .footer .social-icons a:hover {
+            color: #0d6efd; /* Highlight on hover */
+            transform: translateY(-3px); /* Subtle lift */
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="#">✨ Gemini Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-shopping-cart me-1"></i> Cart
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <h1 class="display-4">Elevate Your Style</h1>
+            <p class="lead">Discover the latest trends in fashion and tech. Unbeatable prices, unmatched quality.</p>
+            <a href="#products" class="btn btn-primary mt-3">Shop Now</a>
+        </div>
+    </header>
+
+    <main id="products" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5 fw-bold text-dark">Our Featured Products</h2>
+            <div class="row">
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop" class="card-img-top" alt="Stylish Watch">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Stylish Watch</h5>
+                            <p class="card-text">A perfect blend of classic design and modern functionality for any occasion.</p>
+                            <p class="price mt-auto">$199.99</p>
+                            <a href="#" class="btn btn-primary w-100 mt-2"><i class="fas fa-cart-plus me-2"></i> Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=400&auto=format&fit=crop" class="card-img-top" alt="Running Shoes">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Running Shoes</h5>
+                            <p class="card-text">Lightweight and durable, these shoes provide maximum comfort and support for your runs.</p>
+                            <p class="price mt-auto">$89.99</p>
+                            <a href="#" class="btn btn-primary w-100 mt-2"><i class="fas fa-cart-plus me-2"></i> Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400&auto=format&fit=crop" class="card-img-top" alt="Wireless Headphones">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Wireless Headphones</h5>
+                            <p class="card-text">Immerse yourself in high-fidelity sound with these noise-cancelling headphones.</p>
+                            <p class="price mt-auto">$149.99</p>
+                            <a href="#" class="btn btn-primary w-100 mt-2"><i class="fas fa-cart-plus me-2"></i> Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?q=80&w=400&auto=format&fit=crop" class="card-img-top" alt="Modern Sunglasses">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Modern Sunglasses</h5>
+                            <p class="card-text">Protect your eyes with style. UV400 protection and a sleek, modern frame.</p>
+                            <p class="price mt-auto">$49.99</p>
+                            <a href="#" class="btn btn-primary w-100 mt-2"><i class="fas fa-cart-plus me-2"></i> Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=400&auto=format&fit=crop" class="card-img-top" alt="Leather Shoes">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Classic Leather Shoes</h5>
+                            <p class="card-text">Handcrafted from genuine leather for a timeless look and ultimate comfort.</p>
+                            <p class="price mt-auto">$249.99</p>
+                            <a href="#" class="btn btn-primary w-100 mt-2"><i class="fas fa-cart-plus me-2"></i> Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4 mb-4">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?q=80&w=400&auto=format&fit=crop" class="card-img-top" alt="Vintage Camera">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Vintage Camera</h5>
+                            <p class="card-text">Capture memories in stunning detail with this beautifully restored vintage camera.</p>
+                            <p class="price mt-auto">$399.99</p>
+                            <a href="#" class="btn btn-primary w-100 mt-2"><i class="fas fa-cart-plus me-2"></i> Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <div class="social-icons mb-3">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p class="mb-0">&copy; 2025 Gemini Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
